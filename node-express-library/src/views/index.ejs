@@ -7,9 +7,6 @@
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-		
         <!-- bower:css -->
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
@@ -39,18 +36,11 @@
             </div>
             <nav class="collapse navbar-collapse" role="navigation">
               <ul class="nav navbar-nav">
-                <li>
-                  <a href="#">Category</a>
-                </li>
-                <li>
-                  <a href="#">Category</a>
-                </li>
-                <li>
-                  <a href="#">Category</a>
-                </li>
-                <li>
-                  <a href="#">Category</a>
-                </li>
+                
+                  <% for(var i = 0; i < list.length; i++) { %>
+                      <li><a><%= list[i] %></a></li>
+                  <% } %>
+                
               </ul>
               <ul class="nav navbar-right navbar-nav">
                 <li class="dropdown">
