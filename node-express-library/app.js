@@ -16,6 +16,7 @@ var nav = [{
 
 // Create routes and pass nav into route function
 var bookRoute = require('./src/routes/bookRoutes')(nav);
+var adminRoute = require('./src/routes/adminRoutes')(nav);
 
 // Set view engine and directory to serve files from
 app.use(express.static('public'));
@@ -33,6 +34,7 @@ app.get('/', function (req, res) {
 
 // Books route
 app.use('/Books', bookRoute);
+app.use('/Admin', adminRoute);
 
 // Start server
 app.listen(port, function (err) {
