@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
     });
 });
 
-// Books route
+// Books and Admin route
 app.use('/Books', bookRoute);
 app.use('/Admin', adminRoute);
 
