@@ -31,6 +31,13 @@ module.exports = function() {
             res.redirect('/auth/profile');
         });
     authRouter.route('/profile')
+        // Secure profile route unless logged in
+        .all(function(req, res, next) {
+            if (!req.user) {
+                res.redirect('/');
+            }
+            next();
+        })
         .get(function(req, res) {
             res.json(req.user);
         });
