@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
-app.use(session({secret: 'library'}));
+app.use(session({secret: 'library', resave: true, saveUninitialized: true}));
 require('./src/config/passport')(app);
 
 // Set view engine and directory to serve files from
