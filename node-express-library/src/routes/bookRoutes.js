@@ -5,8 +5,9 @@ var ObjectId = require('mongodb').ObjectID;
 
 // Create router function and take passed in nav to use for links
 var router = function(nav) {
-    var bookController = require('../controllers/bookController')(null, nav);
-    
+    var bookService = require('../services/goodreadsService')();
+    var bookController = require('../controllers/bookController')(bookService, nav);
+
     // Secure book route unless logged in
     bookRouter.use(bookController.middleWare);
     bookRouter.route('/')
