@@ -1,3 +1,8 @@
+# Course Web App using Node and MongoDB
+
+Below is more information on using sample data. You can ignore it for now as this is a work in progress.
+
+------
 ## What is this?
 
 Just you wait folks!
