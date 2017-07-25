@@ -11,7 +11,8 @@ if (major < 7 || (major === 7 && minor <= 5)) {
 require('dotenv').config({ path: 'variables.env' });
 
 // Connect to our Database and handle an bad connections
-mongoose.connect(process.env.DATABASE);
+// mongoose.connect(process.env.DATABASE); // mlab remote
+mongoose.connect(process.env.DATABASE_LOCAL); // local
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
@@ -19,6 +20,8 @@ mongoose.connection.on('error', (err) => {
 
 // READY?! Let's go!
 
+// import all models
+require('./models/Store');
 
 // Start our app!
 const app = require('./app');
