@@ -34,7 +34,12 @@ const storeSchema = new mongoose.Schema({
             required: 'You must supply an address!'
         }
     },
-    photo: String
+    photo: String,
+    author: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: 'You must supply an author'
+    }
 });
 
 storeSchema.pre('save', async function(next) {
@@ -44,8 +49,8 @@ storeSchema.pre('save', async function(next) {
     }
     this.slug = slug(this.name);
     // find other stores with slug of same name or name-1, etc
-    const slugRegEx = new RegEx(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
-    const storesWithSlug = await this.constructore.find({ slug: slugRegEx });
+    const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+    const storesWithSlug = await this.constructor.find({ slug: slugRegEx });
     if (storesWithSlug.length) {
         this.slug = `${this.slug}-${storesWithSlug.length + 1}`;
     }
