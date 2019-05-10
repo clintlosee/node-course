@@ -8,9 +8,13 @@ const uuid = require('uuid');
 const multerOptions = {
     storage: multer.memoryStorage(),
     fileFilter(req, file, next) {
+      console.log(file.mimetype)
         const isPhoto = file.mimetype.startsWith('image/');
+        const isApp = file.mimetype.startsWith('application/');
         if(isPhoto) {
             next(null, true);
+        } else if (isApp) {
+          next(null, true)
         } else {
             next({ message: 'That filetype is not allows!' }, false);
         }
@@ -33,6 +37,7 @@ exports.resize = async (req, res, next) => {
         next();
         return;
     }
+    console.log(req.file)
     const extension = req.file.mimetype.split('/')[1];
     req.body.photo = `${uuid.v4()}.${extension}`;
     // now resize
